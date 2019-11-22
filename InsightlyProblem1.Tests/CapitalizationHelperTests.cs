@@ -14,8 +14,8 @@ namespace InsightlyProblem1.Tests
             string stringOut = CapitalizationHelper.UpperCase(stringIn);
 
             // Assert
-            const string stringOutExpected = "IT IS A BEAUTIFUL DAY TODAY";
-            Assert.Equal(stringOutExpected, stringOut);
+            const string expectedStringOut = "IT IS A BEAUTIFUL DAY TODAY";
+            Assert.Equal(expectedStringOut, stringOut);
         }
 
         [Fact]
@@ -58,7 +58,7 @@ namespace InsightlyProblem1.Tests
         [InlineData('x', 'X')]
         [InlineData('y', 'Y')]
         [InlineData('z', 'Z')]
-        public void Test3(char charIn, char charOutExpected)
+        public void Test3(char charIn, char expectedCharOut)
         {
             // Arrange
 
@@ -66,7 +66,7 @@ namespace InsightlyProblem1.Tests
             char charOut = CapitalizationHelper.UpperCase(charIn);
 
             // Assert
-            Assert.Equal(charOutExpected, charOut);
+            Assert.Equal(expectedCharOut, charOut);
         }
     }
 }

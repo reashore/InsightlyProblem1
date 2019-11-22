@@ -2,49 +2,44 @@
 {
     public class CapitalizationProblem
     {
-        private char[] _paragraphInArray;
+        private char[] _charArray;
+        private int _charArrayLength;
 
-        public string FixCaseInParagraph(string paragraphIn, string[] names)
+        public string FixCaseInParagraph(string value, string[] names)
         {
-            paragraphIn = paragraphIn.Trim();
-            int paraLen = paragraphIn.Length;
-             _paragraphInArray = new char[paraLen];
-
-            // Since strings are immutable, convert string to char[]
-            for (int n = 0; n < paraLen; n++)
-            {
-                _paragraphInArray[n] = paragraphIn[n];
-            }
+            value = value.Trim();
+            _charArray = ConvertToCharArray(value);
+            _charArrayLength = _charArray.Length;
 
             // Capitalize first word of first sentence
-            _paragraphInArray[0] = CapitalizationHelper.UpperCase(_paragraphInArray[0]);
+            _charArray[0] = CapitalizationHelper.UpperCase(_charArray[0]);
 
             // Start from 1, not 0, since first character is now capitalized
-            for (int n = 1; n < paraLen; n++)
+            for (int n = 1; n < _charArrayLength; n++)
             {
-                (bool isName, int nameLength) = IsName(n, paraLen, names);
+                (bool isName, int nameLength) = IsName(n, names);
 
                 if (isName)
                 {
-                    _paragraphInArray[n] = CapitalizationHelper.UpperCase(_paragraphInArray[n]);
+                    _charArray[n] = CapitalizationHelper.UpperCase(_charArray[n]);
                     n += nameLength;
                 }
 
-                bool isSentenceSeparator = IsSentenceSeparator(n, paraLen);
+                bool isSentenceSeparator = IsSentenceSeparator(n);
 
                 if (isSentenceSeparator)
                 {
                     n += 2;
-                    _paragraphInArray[n] = CapitalizationHelper.UpperCase(_paragraphInArray[n]);
+                    _charArray[n] = CapitalizationHelper.UpperCase(_charArray[n]);
                 }
             }
 
-            return ConvertToString(_paragraphInArray);
+            return ConvertToString(_charArray);
         }
 
-        private (bool, int) IsName(int n, int paraLen, string[] words)
+        private (bool, int) IsName(int nStart, string[] words)
         {
-            int remainingLen = paraLen - n;
+            int remainingLen = _charArrayLength - nStart;
             bool found = true;
 
             foreach (string word in words)
@@ -53,12 +48,14 @@
 
                 if (wordLen >= remainingLen)
                 {
-                    return (false, 0);
+                    continue;
                 }
+
+                int n = nStart;
 
                 foreach (char c in word)
                 {
-                    if (c != _paragraphInArray[n])
+                    if (c != _charArray[n])
                     {
                         found = false;
                         break;
@@ -76,9 +73,9 @@
             return (false, 0);
         }
 
-        private bool IsSentenceSeparator(int n, int paraLen)
+        private bool IsSentenceSeparator(int n)
         {
-            int remainingLen = paraLen - n;
+            int remainingLen = _charArrayLength - n;
 
             // test this
             if (remainingLen <= 2)
@@ -86,7 +83,7 @@
                 return false;
             }
 
-            if (_paragraphInArray[n] == '.' && _paragraphInArray[n] == ' ')
+            if (_charArray[n] == '.' && _charArray[n] == ' ')
             {
                 return true;
             }
@@ -94,7 +91,7 @@
             return false;
         }
 
-        private string ConvertToString(char[] charArray)
+        private static string ConvertToString(char[] charArray)
         {
             string result = "";
 
@@ -104,6 +101,19 @@
             }
 
             return result;
+        }
+
+        private static char[] ConvertToCharArray(string stringIn)
+        {
+            int length = stringIn.Length;
+            char[] charArray = new char[length];
+
+            for (int n = 0; n < length; n++)
+            {
+                charArray[n] = stringIn[n];
+            }
+
+            return charArray;
         }
     }
 }
