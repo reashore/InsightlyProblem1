@@ -1,21 +1,36 @@
-﻿namespace InsightlyProblem1
+﻿using System;
+using System.Threading;
+
+namespace InsightlyProblem1
 {
     public class CapitalizationProblem
     {
-        private readonly char[] _charArray;
-        private readonly int _charArrayLength;
-        private readonly string[] _names;
+        private char[] _charArray;
+        private int _charArrayLength;
+        private string[] _names;
 
-        public CapitalizationProblem(string value, string[] names)
+        public string FixCaseInParagraph(string value, string[] names)
         {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
+            if (names == null)
+            {
+                throw new ArgumentNullException(nameof(names));
+            }
+
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                return value;
+            }
+
             value = value.Trim();
             _charArray = Converter.ConvertToCharArray(value);
             _charArrayLength = _charArray.Length;
             _names = names;
-        }
 
-        public string FixCaseInParagraph()
-        {
             // Capitalize first word of first sentence
             _charArray[0] = CapitalizationHelper.UpperCase(_charArray[0]);
 
