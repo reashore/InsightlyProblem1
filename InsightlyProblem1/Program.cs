@@ -12,8 +12,8 @@ namespace InsightlyProblem1
 
             string stringOut = capitalizationProblem.FixCaseInParagraph();
 
-            WriteLine($"valuein = {stringIn}");
-            WriteLine($"valueOut = {stringOut}");
+            WriteLine($"stringIn  = {stringIn}");
+            WriteLine($"stringOut = {stringOut}");
         }
     }
 }

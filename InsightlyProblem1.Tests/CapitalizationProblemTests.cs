@@ -38,7 +38,7 @@ namespace InsightlyProblem1.Tests
         }
 
         [Fact]
-        public void Test4()
+        public void Test3()
         {
             // Arrange
             const string stringIn = "it is a beautiful day in california today, john. i'm not sure if it will rain, but you better be prepared! see you and anna soon.";
@@ -50,6 +50,21 @@ namespace InsightlyProblem1.Tests
 
             // Assert
             const string expectedStringOut = "It is a beautiful day in California today, John. I'm not sure if it will rain, but you better be prepared! See you and Anna soon.";
+            Assert.Equal(expectedStringOut, stringOut);
+        }
+        [Fact]
+        public void Test4()
+        {
+            // Arrange
+            const string stringIn = "";
+            string[] names = { "john", "anna", "california", "oregon" };
+            CapitalizationProblem capitalizationProblem = new CapitalizationProblem(stringIn, names);
+
+            // Act
+            string stringOut = capitalizationProblem.FixCaseInParagraph();
+
+            // Assert
+            const string expectedStringOut = "";
             Assert.Equal(expectedStringOut, stringOut);
         }
     }
