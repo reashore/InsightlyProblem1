@@ -2,22 +2,27 @@
 {
     public class CapitalizationProblem
     {
-        private char[] _charArray;
-        private int _charArrayLength;
+        private readonly char[] _charArray;
+        private readonly int _charArrayLength;
+        private readonly string[] _names;
 
-        public string FixCaseInParagraph(string value, string[] names)
+        public CapitalizationProblem(string value, string[] names)
         {
             value = value.Trim();
-            _charArray = ConvertToCharArray(value);
+            _charArray = Converter.ConvertToCharArray(value);
             _charArrayLength = _charArray.Length;
+            _names = names;
+        }
 
+        public string FixCaseInParagraph()
+        {
             // Capitalize first word of first sentence
             _charArray[0] = CapitalizationHelper.UpperCase(_charArray[0]);
 
-            // Start from 1, not 0, since first character is now capitalized
+            // Start from 1, since first character is capitalized
             for (int n = 1; n < _charArrayLength; n++)
             {
-                (bool isName, int nameLength) = IsName(n, names);
+                (bool isName, int nameLength) = IsName(n);
 
                 if (isName)
                 {
@@ -34,17 +39,16 @@
                 }
             }
 
-            return ConvertToString(_charArray);
+            return Converter.ConvertToString(_charArray);
         }
 
-        private (bool, int) IsName(int nStart, string[] words)
+        private (bool, int) IsName(int nStart)
         {
             int remainingLen = _charArrayLength - nStart;
-            bool found = true;
 
-            foreach (string word in words)
+            foreach (string name in _names)
             {
-                int wordLen = word.Length;
+                int wordLen = name.Length;
 
                 if (wordLen >= remainingLen)
                 {
@@ -52,8 +56,9 @@
                 }
 
                 int n = nStart;
+                bool found = true;
 
-                foreach (char c in word)
+                foreach (char c in name)
                 {
                     if (c != _charArray[n])
                     {
@@ -66,7 +71,7 @@
 
                 if (found)
                 {
-                    return (true, word.Length);
+                    return (true, name.Length);
                 }
             }
 
@@ -76,44 +81,17 @@
         private bool IsSentenceSeparator(int n)
         {
             int remainingLen = _charArrayLength - n;
+            const string sentenceSeparator = ". ";
+            int sentenceSeparatorLength = sentenceSeparator.Length;
 
-            // test this
-            if (remainingLen <= 2)
+            if (remainingLen <= sentenceSeparatorLength)
             {
                 return false;
             }
 
-            if (_charArray[n] == '.' && _charArray[n] == ' ')
-            {
-                return true;
-            }
+            bool endOfSentence = _charArray[n] == '.' || _charArray[n] == '!' || _charArray[n] == '?';
 
-            return false;
-        }
-
-        private static string ConvertToString(char[] charArray)
-        {
-            string result = "";
-
-            foreach (char c in charArray)
-            {
-                result += c;
-            }
-
-            return result;
-        }
-
-        private static char[] ConvertToCharArray(string stringIn)
-        {
-            int length = stringIn.Length;
-            char[] charArray = new char[length];
-
-            for (int n = 0; n < length; n++)
-            {
-                charArray[n] = stringIn[n];
-            }
-
-            return charArray;
+            return endOfSentence && _charArray[n + 1] == ' ';
         }
     }
 }
