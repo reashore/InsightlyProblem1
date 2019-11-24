@@ -104,8 +104,9 @@ namespace InsightlyProblem1
             }
 
             bool endOfSentence = _charArray[n] == '.' || _charArray[n] == '!' || _charArray[n] == '?';
+            bool followedBySpace = _charArray[n + 1] == ' ';
 
-            return endOfSentence && _charArray[n + 1] == ' ';
+            return endOfSentence && followedBySpace;
         }
     }
 }
