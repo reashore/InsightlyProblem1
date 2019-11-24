@@ -30,10 +30,8 @@ namespace InsightlyProblem1
             _charArrayLength = _charArray.Length;
             _names = names;
 
-            // Capitalize first word of first sentence
             _charArray[0] = _charArray[0].UpperCase();
 
-            // Start from 1, since first character is capitalized
             for (int n = 1; n < _charArrayLength; n++)
             {
                 (bool isName, int nameLength) = IsName(n);
