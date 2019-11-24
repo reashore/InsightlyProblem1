@@ -73,12 +73,11 @@ namespace InsightlyProblem1.Tests
         public void Test5()
         {
             // Arrange
-            const string stringIn = null;
             string[] names = { "john", "anna", "california", "oregon" };
             CapitalizationProblem capitalizationProblem = new CapitalizationProblem();
 
             // Act and Assert
-            Assert.Throws<ArgumentNullException>(() => capitalizationProblem.FixCaseInString(stringIn, names)) ;
+            Assert.Throws<ArgumentNullException>(() => capitalizationProblem.FixCaseInString(null, names)) ;
         }
 
         [Fact]
@@ -86,11 +85,10 @@ namespace InsightlyProblem1.Tests
         {
             // Arrange
             const string stringIn = "john anna oregon california another.";
-            string[] names = null;
             CapitalizationProblem capitalizationProblem = new CapitalizationProblem();
 
             // Act and Assert
-            Assert.Throws<ArgumentNullException>(() => capitalizationProblem.FixCaseInString(stringIn, names)) ;
+            Assert.Throws<ArgumentNullException>(() => capitalizationProblem.FixCaseInString(stringIn, null)) ;
         }
     }
 }
