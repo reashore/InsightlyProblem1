@@ -11,7 +11,7 @@ namespace InsightlyProblem1.Tests
             const string stringIn = "it is a beautiful day today";
 
             // Act
-            string stringOut = CapitalizationHelper.UpperCase(stringIn);
+            string stringOut = stringIn.UpperCase();
 
             // Assert
             const string expectedStringOut = "IT IS A BEAUTIFUL DAY TODAY";
@@ -25,7 +25,7 @@ namespace InsightlyProblem1.Tests
             const string stringIn = "!@#$%^&*()+=_-<>";
 
             // Act
-            string stringOut = CapitalizationHelper.UpperCase(stringIn);
+            string stringOut = stringIn.UpperCase();
 
             // Assert
             Assert.Equal(stringIn, stringOut);
@@ -63,7 +63,7 @@ namespace InsightlyProblem1.Tests
             // Arrange
 
             // Act
-            char charOut = CapitalizationHelper.UpperCase(charIn);
+            char charOut = charIn.UpperCase();
 
             // Assert
             Assert.Equal(expectedCharOut, charOut);

@@ -1,37 +1,56 @@
 ﻿using System;
+using System.Text;
 
 namespace InsightlyProblem1
 {
     public static class CapitalizationHelper
     {
-        public static string UpperCase(string valueIn)
-        {
-            if (valueIn == null)
-            {
-                throw new ArgumentException("valueIn must be non-null");
-            }
+        //public static string UpperCase(string valueIn)
+        //{
+        //    if (valueIn == null)
+        //    {
+        //        throw new ArgumentNullException(nameof(valueIn));
+        //    }
 
-            string valueOut = "";
+        //    StringBuilder stringBuilder = new StringBuilder();
 
-            foreach (char c in valueIn)
-            {
-                valueOut += UpperCase(c);
-            }
+        //    foreach (char c in valueIn)
+        //    {
+        //        char cUpperCase = UpperCase(c);
+        //        stringBuilder.Append(cUpperCase);
+        //    }
 
-            return valueOut;
-        }
+        //    return stringBuilder.ToString();
+        //}
 
-        public static char UpperCase(char charIn)
-        {
-            char charOut = charIn;
+        //public static string UpperCase2(string valueIn)
+        //{
+        //    if (valueIn == null)
+        //    {
+        //        throw new ArgumentNullException(nameof(valueIn));
+        //    }
 
-            if ('a' <= charIn && charIn <= 'z')
-            {
-                char charUpper = (char)(charIn - 'a' + 'A');
-                charOut = charUpper;
-            }
+        //    string valueOut = "";
 
-            return charOut;
-        }
+        //    foreach (char c in valueIn)
+        //    {
+        //        valueOut += UpperCase(c);
+        //    }
+
+        //    return valueOut;
+        //}
+
+        //public static char UpperCase(char charIn)
+        //{
+        //    char charOut = charIn;
+
+        //    if ('a' <= charIn && charIn <= 'z')
+        //    {
+        //        char charUpper = (char)(charIn - 'a' + 'A');
+        //        charOut = charUpper;
+        //    }
+
+        //    return charOut;
+        //}
     }
 }

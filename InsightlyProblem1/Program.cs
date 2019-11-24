@@ -14,6 +14,12 @@ namespace InsightlyProblem1
 
             WriteLine($"stringIn  = {stringIn}");
             WriteLine($"stringOut = {stringOut}");
+
+            //char[] foo = stringIn.ToCharArray();
+            //string bar1 = foo.ToString1();
+            //string bar2 = foo.ToString2();
+            //string bar3 = foo.ToString();
+
         }
     }
 }

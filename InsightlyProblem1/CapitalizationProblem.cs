@@ -26,12 +26,13 @@ namespace InsightlyProblem1
             }
 
             value = value.Trim();
-            _charArray = Converter.ConvertToCharArray(value);
+            _charArray = value.ToCharArray();
             _charArrayLength = _charArray.Length;
             _names = names;
 
             // Capitalize first word of first sentence
-            _charArray[0] = CapitalizationHelper.UpperCase(_charArray[0]);
+            _charArray[0] = _charArray[0].UpperCase();
+            //_charArray[0] = CapitalizationHelper.UpperCase(_charArray[0]);
 
             // Start from 1, since first character is capitalized
             for (int n = 1; n < _charArrayLength; n++)
@@ -40,7 +41,7 @@ namespace InsightlyProblem1
 
                 if (isName)
                 {
-                    _charArray[n] = CapitalizationHelper.UpperCase(_charArray[n]);
+                    _charArray[n] = _charArray[n].UpperCase();
                     n += nameLength;
                 }
 
@@ -49,11 +50,12 @@ namespace InsightlyProblem1
                 if (isSentenceSeparator)
                 {
                     n += 2;
-                    _charArray[n] = CapitalizationHelper.UpperCase(_charArray[n]);
+                    _charArray[n] = _charArray[n].UpperCase();
                 }
             }
 
-            return Converter.ConvertToString(_charArray);
+            return _charArray.ToString2();
+            //return Extensions.ConvertToString(_charArray);
         }
 
         private (bool, int) IsName(int nStart)
