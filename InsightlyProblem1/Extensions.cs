@@ -38,6 +38,11 @@ namespace InsightlyProblem1
 
         public static string ToString2(this char[] charArray)
         {
+            if (charArray == null)
+            {
+                throw new ArgumentNullException(nameof(charArray));
+            }
+
             StringBuilder stringBuilder = new StringBuilder();
 
             foreach (char c in charArray)
