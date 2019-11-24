@@ -32,7 +32,6 @@ namespace InsightlyProblem1
 
             // Capitalize first word of first sentence
             _charArray[0] = _charArray[0].UpperCase();
-            //_charArray[0] = CapitalizationHelper.UpperCase(_charArray[0]);
 
             // Start from 1, since first character is capitalized
             for (int n = 1; n < _charArrayLength; n++)
@@ -55,7 +54,6 @@ namespace InsightlyProblem1
             }
 
             return _charArray.ToString2();
-            //return Extensions.ConvertToString(_charArray);
         }
 
         private (bool, int) IsName(int nStart)
