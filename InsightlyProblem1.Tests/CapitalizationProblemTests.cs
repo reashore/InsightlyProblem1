@@ -14,7 +14,7 @@ namespace InsightlyProblem1.Tests
             CapitalizationProblem capitalizationProblem = new CapitalizationProblem();
 
             // Act
-            string stringOut = capitalizationProblem.FixCaseInParagraph(stringIn, names);
+            string stringOut = capitalizationProblem.FixCaseInString(stringIn, names);
 
             // Assert
             const string expectedStringOut = "John Anna Oregon California another.";
@@ -30,7 +30,7 @@ namespace InsightlyProblem1.Tests
             CapitalizationProblem capitalizationProblem = new CapitalizationProblem();
 
             // Act
-            string stringOut = capitalizationProblem.FixCaseInParagraph(stringIn, names);
+            string stringOut = capitalizationProblem.FixCaseInString(stringIn, names);
 
             // Assert
             const string expectedStringOut = "One day John and Anna went to Oregon and California.";
@@ -46,7 +46,7 @@ namespace InsightlyProblem1.Tests
             CapitalizationProblem capitalizationProblem = new CapitalizationProblem();
 
             // Act
-            string stringOut = capitalizationProblem.FixCaseInParagraph(stringIn, names);
+            string stringOut = capitalizationProblem.FixCaseInString(stringIn, names);
 
             // Assert
             const string expectedStringOut = "It is a beautiful day in California today, John. I'm not sure if it will rain, but you better be prepared! See you and Anna soon.";
@@ -62,7 +62,7 @@ namespace InsightlyProblem1.Tests
             CapitalizationProblem capitalizationProblem = new CapitalizationProblem();
 
             // Act
-            string stringOut = capitalizationProblem.FixCaseInParagraph(stringIn, names);
+            string stringOut = capitalizationProblem.FixCaseInString(stringIn, names);
 
             // Assert
             const string expectedStringOut = "";
@@ -78,7 +78,7 @@ namespace InsightlyProblem1.Tests
             CapitalizationProblem capitalizationProblem = new CapitalizationProblem();
 
             // Act and Assert
-            Assert.Throws<ArgumentNullException>(() => capitalizationProblem.FixCaseInParagraph(stringIn, names)) ;
+            Assert.Throws<ArgumentNullException>(() => capitalizationProblem.FixCaseInString(stringIn, names)) ;
         }
 
         [Fact]
@@ -90,7 +90,7 @@ namespace InsightlyProblem1.Tests
             CapitalizationProblem capitalizationProblem = new CapitalizationProblem();
 
             // Act and Assert
-            Assert.Throws<ArgumentNullException>(() => capitalizationProblem.FixCaseInParagraph(stringIn, names)) ;
+            Assert.Throws<ArgumentNullException>(() => capitalizationProblem.FixCaseInString(stringIn, names)) ;
         }
     }
 }

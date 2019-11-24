@@ -8,7 +8,7 @@ namespace InsightlyProblem1
         private int _charArrayLength;
         private string[] _names;
 
-        public string FixCaseInParagraph(string value, string[] names)
+        public string FixCaseInString(string value, string[] names)
         {
             if (value == null)
             {

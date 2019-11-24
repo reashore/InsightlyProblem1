@@ -10,7 +10,7 @@ namespace InsightlyProblem1
             string[] names = { "john", "anna", "california", "oregon" };
             CapitalizationProblem capitalizationProblem = new CapitalizationProblem();
 
-            string stringOut = capitalizationProblem.FixCaseInParagraph(stringIn, names);
+            string stringOut = capitalizationProblem.FixCaseInString(stringIn, names);
 
             WriteLine($"stringIn  = {stringIn}");
             WriteLine($"stringOut = {stringOut}");
